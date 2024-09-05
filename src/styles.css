@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+th{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small;
+}
+
+td{
+    font-size: 13px;
+}
+body{
+    background: -webkit-linear-gradient(90deg, #408197,#304869,#24132f);background: linear-gradient(90deg, #408197,#304869,#24132f);
+}
+h4{
+    font-family: 'Courier New', Courier, monospace;
+    color:white;
+}
+.navbar-brand{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+}
+
+.title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container {
+    display: flex;
+    gap: 0.5rem; /* Espacio entre  botones */
+  }
+  
+
+
+  /* From Uiverse.io by Jedi-hongbin */ 
+button.regresar {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+   }
+   
+   button.regresar > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+   }
+   
+   button.regresar:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+   }
+   
+   button.regresar:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+   }
+

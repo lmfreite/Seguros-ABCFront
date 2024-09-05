@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="title">
+        <h4>Lista de asegurados</h4>
+        <button type="button" class="btn btn-success" routerLink="/add">Agregar asegurado</button>
+
+    </div>
+    
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+              <th scope="col">Número Identificación</th>
+              <th scope="col">Primer Nombre</th>
+              <th scope="col">Segundo Nombre</th>
+              <th scope="col">Primer Apellido</th>
+              <th scope="col">Segundo Apellido</th>
+              <th scope="col">Teléfono</th>
+              <th scope="col">Email</th>
+              <th scope="col">Fecha Nacimiento</th>
+              <th scope="col">Valor Estimado</th>
+              <th scope="col">Observaciones</th>
+              <th scope="col"></th>
+    
+    
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-dark" *ngFor="let asegurado of asegurados">
+              <td>{{ asegurado.numeroIdentificacion }}</td>
+              <td>{{ asegurado.primerNombre }}</td>
+              <td>{{ asegurado.segundoNombre }}</td>
+              <td>{{ asegurado.primerApellido }}</td>
+              <td>{{ asegurado.segundoApellido }}</td>
+              <td>{{ asegurado.telefono }}</td>
+              <td>{{ asegurado.email }}</td>
+              <td>{{ asegurado.fechaNacimiento }}</td>
+              <td>{{ asegurado.valorEstimadoSeguro }}</td>
+              <td>{{ asegurado.observaciones }}</td>
+              <td class="button-container">
+                <button routerLink="/edit/{{asegurado.numeroIdentificacion}}" type="button" class="btn btn-warning btn-sm">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
+
+            </tr>
+          </tbody>
+      </table>
+</div>
