@@ -3,31 +3,27 @@ import { Asegurado } from '@interfaces/asegurado';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AseguradoService } from 'app/services/asegurado.service';
+import { ProgressbarComponent } from "../progressbar/progressbar.component";
 
 @Component({
   selector: 'app-asegurados',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink, ProgressbarComponent],
   templateUrl: './asegurados.component.html',
-  styleUrls: ['./asegurados.component.css']
+  styleUrls: ['./asegurados.component.css'],
 })
 export class AseguradosComponent implements OnInit {
-  asegurados: Asegurado[] = [{
-    "numeroIdentificacion": 1140877322,
-    "primerNombre": "leonardo",
-    "segundoNombre": "Manuel",
-    "primerApellido": "Freite",
-    "segundoApellido": "Ospino",
-    "telefono": "3002644600",
-    "email": "dataclarogt@atlanticqi.com",
-    "fechaNacimiento": "1995-05-21",
-    "valorEstimadoSeguro": 20000000,
-    "observaciones": ""
-  }];
+  asegurados: Asegurado[] = [];
 
-  constructor(private _aseguradosService: AseguradoService) {}
+  constructor(private _AseguradoService: AseguradoService) {}
 
-   ngOnInit():void {
-      this._aseguradosService
-   }
+  ngOnInit(): void {
+    this.getList();
+  }
+
+  getList() {
+    this._AseguradoService.getAseguradoData().subscribe((data) => {
+      this.asegurados=data;
+    });
+  }
 }

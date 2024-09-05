@@ -1,22 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Asegurado } from '@interfaces/asegurado';
-import { env } from 'env';
+import { env } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AseguradoService {
-  private myappurl:string;
-  private myapiurl:string;
+private myAppUrl: string;
+private myApiurl: string;
 
-  constructor(private http:HttpClient) { 
-    this.myappurl=env.endpoint;
-    this.myapiurl='api/Asegurado/'
+
+  constructor(private http: HttpClient) { 
+    this.myAppUrl= env.endpoint;
+    this.myApiurl= "api/Asegurado"
   }
 
-  getListAsegurados():Observable<Asegurado[]>{
-    return this.http.get<Asegurado[]>(this.myappurl+this.myapiurl)
-  }
+  getAseguradoData():Observable<Asegurado[]>{
+    return this.http.get<Asegurado[]>(this.myAppUrl+this.myApiurl);
+}
+
+
 }

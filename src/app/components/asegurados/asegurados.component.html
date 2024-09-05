@@ -1,4 +1,6 @@
+<app-progressbar> </app-progressbar>
 <div class="container">
+  
     <div class="title">
         <h4>Lista de asegurados</h4>
         <button type="button" class="btn btn-success" routerLink="/add">Agregar asegurado</button>
@@ -6,7 +8,8 @@
     </div>
     
 
-    <table class="table table-dark">
+    <table 
+    class="table table-bordered table-striped table-dark">
         <thead>
             <tr>
               <th scope="col">Número Identificación</th>
@@ -19,7 +22,7 @@
               <th scope="col">Fecha Nacimiento</th>
               <th scope="col">Valor Estimado</th>
               <th scope="col">Observaciones</th>
-              <th scope="col"></th>
+              <th scope="col">Acciones</th>
     
     
             </tr>
@@ -34,7 +37,7 @@
               <td>{{ asegurado.telefono }}</td>
               <td>{{ asegurado.email }}</td>
               <td>{{ asegurado.fechaNacimiento }}</td>
-              <td>{{ asegurado.valorEstimadoSeguro }}</td>
+              <td>{{ asegurado.valorEstimadoSeguro |currency }}</td>
               <td>{{ asegurado.observaciones }}</td>
               <td class="button-container">
                 <button routerLink="/edit/{{asegurado.numeroIdentificacion}}" type="button" class="btn btn-warning btn-sm">Editar</button>
