@@ -1,5 +1,4 @@
-export const env={
+export const environment={
     production:false,
-  //endpoint:"https://localhost:7106/" 
-    endpoint:"https://segurosabc.somee.com/" 
+    endpoint:"http://segurosabc.somee.com/api/Asegurado" 
 }

@@ -4,15 +4,13 @@ import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
-  NgForm,
+  Validators
 } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Asegurado } from '@interfaces/asegurado';
 import { AseguradoService } from 'app/services/asegurado.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProgressbarComponent } from '../progressbar/progressbar.component';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-edit-asegurado',
@@ -118,6 +116,7 @@ export class AddEditAseguradoComponent implements OnInit {
             'Asegurado agregado'
           );
           this.loading = false;
+          this.form.reset();
         });
       }
     } else {
