@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Form, FormGroup, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Asegurado } from '@interfaces/asegurado';
 import { AseguradoService } from 'app/services/asegurado.service';
@@ -20,11 +20,10 @@ export class AddEditAseguradoComponent implements OnInit {
   loading:boolean=false;
   id:number;
   operacion:string="Agregar "
-  form:FormGroup;
 
   constructor(private _AseguradoService: AseguradoService,private toastr:ToastrService, private aRoute:ActivatedRoute) {
     
-
+    
     this.id=Number(aRoute.snapshot.paramMap.get("id"));
   }
 
