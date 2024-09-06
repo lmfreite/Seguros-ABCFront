@@ -28,6 +28,7 @@ export class AseguradosComponent implements OnInit {
     this.loading = true;
     this._AseguradoService.getAseguradoData().subscribe({
       next: (data: Asegurado[]) => {
+        console.log('Datos recibidos:', data);
         this.asegurados = data;
         this.loading = false;
       },
