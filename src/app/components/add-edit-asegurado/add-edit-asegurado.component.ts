@@ -80,7 +80,7 @@ export class AddEditAseguradoComponent implements OnInit {
         valorEstimadoSeguro: this.form.value.valorEstimadoSeguro,
         observaciones: this.form.value.observaciones ? this.form.value.observaciones.toLowerCase() : null,
       };
-
+      console.log(asegurado)
       // Validaciones adicionales
       if (this.id !== 0) {
         // Editar asegurado existente
