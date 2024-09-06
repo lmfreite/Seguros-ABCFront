@@ -44,7 +44,7 @@ export class AddEditAseguradoComponent implements OnInit {
       segundoApellido: ['', [Validators.required]], // Segundo apellido requerido
       telefono: [
         '',
-        [Validators.required, Validators.pattern(/^\+?[1-9]\d{1,14}$/)],
+        [Validators.required],
       ], // Validar formato de teléfono
       email: ['', [Validators.required, Validators.email]], // Validar formato de correo electrónico
       fechaNacimiento: ['', [Validators.required]], // Fecha de nacimiento requerida
