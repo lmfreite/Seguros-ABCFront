@@ -28,8 +28,18 @@ export class AseguradosComponent implements OnInit {
     this.loading = true;
     this._AseguradoService.getAseguradoData().subscribe({
       next: (data: Asegurado[]) => {
-        console.log('Datos recibidos:', data);
-        this.asegurados = data;
+        this.asegurados = data.map(asegurado => ({
+          numeroIdentificacion: asegurado.numeroIdentificacion,
+          primerNombre: asegurado.primerNombre,
+          segundoNombre: asegurado.segundoNombre,
+          primerApellido: asegurado.primerApellido,
+          segundoApellido: asegurado.segundoApellido,
+          telefono: asegurado.telefono,
+          email: asegurado.email,
+          fechaNacimiento: asegurado.fechaNacimiento,
+          valorEstimadoSeguro: asegurado.valorEstimadoSeguro,
+          observaciones: asegurado.observaciones
+        }));
         this.loading = false;
       },
       error: (error) => {
