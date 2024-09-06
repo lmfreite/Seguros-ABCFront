@@ -46,7 +46,7 @@ export class AseguradosComponent implements OnInit {
     this.loading=true
     this._AseguradoService.deleteAsegurado(numeroIdentificacion).subscribe((data) => {
     this.getList();
-    this.toastr.warning("Asegurado eliminado con exito.","Asegurado eliminado")
+    this.toastr.error("Asegurado eliminado con exito.")
       });
 }
 }

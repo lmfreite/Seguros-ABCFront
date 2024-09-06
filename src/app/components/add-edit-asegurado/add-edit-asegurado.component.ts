@@ -1,21 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Asegurado } from '@interfaces/asegurado';
+import { AseguradoService } from 'app/services/asegurado.service';
+import { ToastrService } from 'ngx-toastr';
+import { ProgressbarComponent } from "../progressbar/progressbar.component";
 
 
 @Component({
   selector: 'app-add-edit-asegurado',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,RouterLink,ProgressbarComponent],
   templateUrl: './add-edit-asegurado.component.html',
   styleUrl: './add-edit-asegurado.component.css'
 })
 
-export class AddEditAseguradoComponent {
+export class AddEditAseguradoComponent implements OnInit {
+  loading:boolean=false;
+  id:number;
+  operacion:string="Agregar "
+
+  constructor(private _AseguradoService: AseguradoService,private toastr:ToastrService, private aRoute:ActivatedRoute) {
+    this.id=Number(aRoute.snapshot.paramMap.get("id"));
+  }
+
+
+  ngOnInit(): void {
+    if(this.id !=0)
+    {this.operacion="Editar ";
+      this.editAsegurado(this.id)
+    };
+  }
 
   // Método que se llama cuando el formulario se envía
   onSubmit(form: NgForm) {
+    
     if (form.valid) {
       // Convertir los campos a minúsculas cuando corresponda
       const asegurado: Asegurado = {
@@ -34,12 +54,18 @@ export class AddEditAseguradoComponent {
       // Validaciones adicionales
 
       if (!this.validarEdad(asegurado.fechaNacimiento)) {
-        alert('El asegurado debe ser mayor de 18 años.');
         return;
       }
-  
-      // Aquí puedes enviar los datos a una API o realizar otras acciones
-      console.log('Formulario válido. Datos del asegurado:', asegurado);
+    this.loading = true;
+      
+     this._AseguradoService.addAsegurado(asegurado).subscribe(()=>{
+      
+    this.toastr.success(`Asegurado ${asegurado.primerNombre} ${asegurado.primerApellido} agregado con exito.`,"Asegurado agregado")
+    this.loading = false;
+
+     }
+
+     )
     } else {
       console.log('Formulario inválido');
     }
@@ -55,4 +81,15 @@ export class AddEditAseguradoComponent {
     // Verifica si ya ha cumplido los 18 años
     return (mes > 0 || (mes === 0 && hoy.getDate() >= fechaNacimientoDate.getDate())) && edad >= 18;
   }
+
+editAsegurado(id:number){
+  this.loading=true;
+  this._AseguradoService.editAsegurado(id).subscribe((data:Asegurado[]) => {
+    console.log(data)
+    this.loading = false;
+
+      });
 }
+}
+
+

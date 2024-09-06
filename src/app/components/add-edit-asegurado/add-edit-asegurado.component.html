@@ -1,177 +1,177 @@
+<app-progressbar *ngIf="loading"> </app-progressbar>
 
 <div class="row">
-    <div class="col-lg-5 offset-lg-4 mt-5">
-      <div class="card border-success mb-3" style="max-width: 60rem">
-        <div class="card-header text-center">Agregar asegurado</div>
-        <div class="card-body">
-          <form #aseguradoForm="ngForm" (ngSubmit)="onSubmit(aseguradoForm)">
-            <div class="row">
-              <!-- Número de identificación -->
-              <div class="col-md-6 mb-3">
-                <label for="identification" class="form-label">Número de identificación</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="identification"
-                  placeholder="Ingresa el número de identificación"
-                  required
-                  pattern="[0-9]+"
-                  name="identification"
-                  ngModel
-                />
-                <div *ngIf="!aseguradoForm.controls['identification']?.valid && aseguradoForm.controls['identification']?.touched" class="text-danger">
-                  Solo se aceptan números.
-                </div>
-              </div>
-  
-              <!-- Nombre -->
-              <div class="col-md-6 mb-3">
-                <label for="first-name" class="form-label">Nombre</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="first-name"
-                  placeholder="Nombre"
-                  required
-                  name="firstName"
-                  ngModel
-                />
-              </div>
-             
-            </div>
-  
-            <div class="row">
-              <!-- Segundo nombre (no requerido) -->
-              <div class="col-md-6 mb-3">
-                <label for="second-name" class="form-label">Segundo nombre</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="second-name"
-                  placeholder="Segundo nombre"
-                  name="secondName"
-                  ngModel
-                />
-              </div>
-  
-              <!-- Apellido -->
-              <div class="col-md-6 mb-3">
-                <label for="last-name" class="form-label">Apellido</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="last-name"
-                  placeholder="Apellido"
-                  required
-                  name="lastName"
-                  ngModel
-                />
+  <div class="col-lg-5 offset-lg-4 mt-5">
+    <div class="card border-success mb-3" style="max-width: 60rem">
+      <div class="card-header text-center">{{operacion}}asegurado</div>
+      <div class="card-body">
+        <form #aseguradoForm="ngForm" (ngSubmit)="onSubmit(aseguradoForm)">
+          <div class="row">
+            <!-- Número de identificación -->
+            <div class="col-md-6 mb-3">
+              <label for="identification" class="form-label">Número de identificación</label>
+              <input
+                type="number"
+                class="form-control"
+                id="identification"
+                placeholder="Ingresa el número de identificación"
+                required
+                pattern="[0-9]+"
+                name="identification"
+                ngModel
+              />
+              <div *ngIf="!aseguradoForm.controls['identification']?.valid && aseguradoForm.controls['identification']?.touched" class="text-danger">
+                Solo se aceptan números.
               </div>
             </div>
+
+            <!-- Nombre -->
+            <div class="col-md-6 mb-3">
+              <label for="first-name" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first-name"
+                placeholder="Nombre"
+                required
+                name="firstName"
+                ngModel
+              />
+            </div>
+           
+          </div>
+
+          <div class="row">
+            <!-- Segundo nombre (no requerido) -->
+            <div class="col-md-6 mb-3">
+              <label for="second-name" class="form-label">Segundo nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="second-name"
+                placeholder="Segundo nombre"
+                name="secondName"
+                ngModel
+              />
+            </div>
+
+            <!-- Apellido -->
+            <div class="col-md-6 mb-3">
+              <label for="last-name" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="last-name"
+                placeholder="Apellido"
+                required
+                name="lastName"
+                ngModel
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- Segundo apellido -->
+            <div class="col-md-6 mb-3">
+              <label for="second-last-name" class="form-label">Segundo apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="second-last-name"
+                required
+                name="secondLastName"
+                placeholder="Segundo apellido"
+                ngModel
+              />
+            </div>
+            
+            <!-- Teléfono -->
+            <div class="col-md-6 mb-3">
+              <label for="phone" class="form-label">Teléfono</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phone"
+                name="phone"
+                placeholder="Ingresa el número de teléfono"
+                ngModel
+              />
+            </div>
+          </div>
   
-            <div class="row">
-              <!-- Segundo apellido -->
-              <div class="col-md-6 mb-3">
-                <label for="second-last-name" class="form-label">Segundo apellido</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="second-last-name"
-                  required
-                  name="secondLastName"
-                  placeholder="Segundo apellido"
-                  ngModel
-                />
+          <div class="row">
+            <!-- Correo electrónico -->
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                required
+                name="email"
+                placeholder="Ingresa el correo electrónico"
+                ngModel
+                email
+              />
+              <div *ngIf="aseguradoForm.controls['email']?.errors?.['email'] && aseguradoForm.controls['email']?.touched" class="text-danger">
+                Ingresa un correo válido.
               </div>
+            </div>
+            
+            <!-- Fecha de Nacimiento -->
+            <div class="col-md-6 mb-3">
+              <label for="birth-date" class="form-label">Fecha de Nacimiento</label>
+              <input
+                type="date"
+                class="form-control"
+                id="birth-date"
+                required
+                name="birthDate"
+                min="1900-01-01"
+                ngModel
+              />
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Valor Estimado del Seguro -->
+            <div class=" mb-3">
+              <label for="insurance-value" class="form-label">Valor Estimado del Seguro</label>
+              <input
+                type="number"
+                class="form-control"
+                id="insurance-value"
+                required
+                name="insuranceValue"
+                placeholder="Ingresa el valor estimado del seguro"
+                ngModel
+              />
               
-              <!-- Teléfono -->
-              <div class="col-md-6 mb-3">
-                <label for="phone" class="form-label">Teléfono</label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="phone"
-                  name="phone"
-                  placeholder="Ingresa el número de teléfono"
-                  ngModel
-                />
-              </div>
-            </div>
-    
-            <div class="row">
-              <!-- Correo electrónico -->
-              <div class="col-md-6 mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  required
-                  name="email"
-                  placeholder="Ingresa el correo electrónico"
-                  ngModel
-                  email
-                />
-                <div *ngIf="aseguradoForm.controls['email']?.errors?.['email'] && aseguradoForm.controls['email']?.touched" class="text-danger">
-                  Ingresa un correo válido.
-                </div>
-              </div>
-              
-              <!-- Fecha de Nacimiento -->
-              <div class="col-md-6 mb-3">
-                <label for="birth-date" class="form-label">Fecha de Nacimiento</label>
-                <input
-                  type="date"
-                  class="form-control"
-                  id="birth-date"
-                  required
-                  name="birthDate"
-                  min="1900-01-01"
-                  ngModel
-                />
-              </div>
-            </div>
-    
-            <div class="row">
-              <!-- Valor Estimado del Seguro -->
-              <div class=" mb-3">
-                <label for="insurance-value" class="form-label">Valor Estimado del Seguro</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="insurance-value"
-                  required
-                  name="insuranceValue"
-                  placeholder="Ingresa el valor estimado del seguro"
-                  ngModel
-                />
-                
-              </div>
-    
-              <!-- Observaciones -->
-              <div class=" mb-3">
-                <label for="observations" class="form-label">Observaciones</label>
-                <textarea
-                  class="form-control"
-                  id="observations"
-                  placeholder="Ingresa las observaciones"
-                  rows="3"
-                  name="observations"
-                  ngModel
-                ></textarea>
-              </div>
             </div>
   
-            <!-- Botón Registrar -->
-             
-            <div class="text-center">
-              <button type="submit" class="btn btn-success btn-lg" [disabled]="!aseguradoForm.valid">
-                Registrar Cliente
-              </button>
+            <!-- Observaciones -->
+            <div class=" mb-3">
+              <label for="observations" class="form-label">Observaciones</label>
+              <textarea
+                class="form-control"
+                id="observations"
+                placeholder="Ingresa las observaciones"
+                rows="3"
+                name="observations"
+                ngModel
+              ></textarea>
             </div>
-          </form>
-        </div>
+          </div>
+
+          <!-- Botón Registrar -->
+          
+           
+          <div class="text-center">
+            <button type="button" class="btn btn-light btn-lg me-2" routerLink="/">Regresar</button>
+            <button type="submit" class="btn btn-success btn-lg" [disabled]="!aseguradoForm.valid">Registrar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

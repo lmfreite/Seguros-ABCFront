@@ -10,26 +10,29 @@ import { Observable } from 'rxjs';
 export class AseguradoService {
 private myAppUrl: string;
 private myApiurl: string;
-private myApidelete: string;
-
-
 
   constructor(private http: HttpClient) { 
     this.myAppUrl= env.endpoint;
-    this.myApiurl= "api/Asegurado"
-    this.myApidelete= "api/Asegurado/"
+    this.myApiurl= "api/Asegurado/";
+    
+
 
   }
 
-  getAseguradoData():Observable<Asegurado[]>{
+getAseguradoData():Observable<Asegurado[]>{
     return this.http.get<Asegurado[]>(this.myAppUrl+this.myApiurl);
 }
 
 deleteAsegurado(numeroIdentificacion:number):Observable<void>{
-  return this.http.delete<void>(`${this.myAppUrl}${this.myApidelete}${numeroIdentificacion}`);
+  return this.http.delete<void>(`${this.myAppUrl}${this.myApiurl}${numeroIdentificacion}`);
 }
 
 addAsegurado(asegurado:Asegurado): Observable<void>{
   return this.http.post<void>(this.myAppUrl+this.myApiurl,asegurado)
 }
+
+editAsegurado(id:number):Observable<Asegurado[]>{
+  return this.http.get<Asegurado[]>(`${this.myAppUrl}${this.myApiurl}${id}`);
+}
+
 }
