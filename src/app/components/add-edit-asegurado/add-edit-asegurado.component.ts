@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Asegurado } from '@interfaces/asegurado';
 import { AseguradoService } from 'app/services/asegurado.service';
@@ -11,7 +11,7 @@ import { ProgressbarComponent } from "../progressbar/progressbar.component";
 @Component({
   selector: 'app-add-edit-asegurado',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink,ProgressbarComponent,ReactiveFormsModule],
+  imports: [CommonModule,FormsModule,RouterLink,ProgressbarComponent],
   templateUrl: './add-edit-asegurado.component.html',
   styleUrl: './add-edit-asegurado.component.css'
 })
@@ -56,11 +56,12 @@ export class AddEditAseguradoComponent implements OnInit {
       // Validaciones adicionales
 
       if (!this.validarEdad(asegurado.fechaNacimiento)) {
-        return;
-      }
+        this.toastr.error("Asegurado debe ser mayor de edad");
+      };
     this.loading = true;
       
      this._AseguradoService.addAsegurado(asegurado).subscribe(()=>{
+      
       
     this.toastr.success(`Asegurado ${asegurado.primerNombre} ${asegurado.primerApellido} agregado con exito.`,"Asegurado agregado")
     this.loading = false;
