@@ -89,7 +89,6 @@ editAsegurado(id:number){
   this._AseguradoService.editAsegurado(id).subscribe((data:Asegurado[]) => {
     console.log(data)
     this.loading = false;
-    this.form
       });
 }
 }
