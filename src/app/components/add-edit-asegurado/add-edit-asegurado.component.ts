@@ -116,7 +116,6 @@ export class AddEditAseguradoComponent implements OnInit {
             'Asegurado agregado'
           );
           this.loading = false;
-          this.form.reset();
         });
       }
     } else {
