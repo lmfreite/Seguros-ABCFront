@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Form, FormGroup, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Asegurado } from '@interfaces/asegurado';
 import { AseguradoService } from 'app/services/asegurado.service';
@@ -11,7 +11,7 @@ import { ProgressbarComponent } from "../progressbar/progressbar.component";
 @Component({
   selector: 'app-add-edit-asegurado',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink,ProgressbarComponent],
+  imports: [CommonModule,FormsModule,RouterLink,ProgressbarComponent,ReactiveFormsModule],
   templateUrl: './add-edit-asegurado.component.html',
   styleUrl: './add-edit-asegurado.component.css'
 })
@@ -20,8 +20,11 @@ export class AddEditAseguradoComponent implements OnInit {
   loading:boolean=false;
   id:number;
   operacion:string="Agregar "
+  form:FormGroup;
 
   constructor(private _AseguradoService: AseguradoService,private toastr:ToastrService, private aRoute:ActivatedRoute) {
+    
+
     this.id=Number(aRoute.snapshot.paramMap.get("id"));
   }
 
@@ -87,7 +90,7 @@ editAsegurado(id:number){
   this._AseguradoService.editAsegurado(id).subscribe((data:Asegurado[]) => {
     console.log(data)
     this.loading = false;
-
+    this.form
       });
 }
 }
