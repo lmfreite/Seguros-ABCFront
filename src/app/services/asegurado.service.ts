@@ -31,8 +31,16 @@ addAsegurado(asegurado:Asegurado): Observable<void>{
   return this.http.post<void>(this.myAppUrl+this.myApiurl,asegurado)
 }
 
-editAsegurado(id:number):Observable<Asegurado[]>{
-  return this.http.get<Asegurado[]>(`${this.myAppUrl}${this.myApiurl}${id}`);
+editAsegurado(id:number):Observable<Asegurado>{
+  return this.http.get<Asegurado>(`${this.myAppUrl}${this.myApiurl}${id}`);
 }
 
+
+updateAsegurado(id: number, asegurado: Asegurado): Observable<void> {
+  return this.http.put<void>(`${this.myAppUrl}${this.myApiurl}${id}`, asegurado);
 }
+
+
+}
+
+
