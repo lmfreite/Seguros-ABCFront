@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Asegurado } from '@interfaces/asegurado';
 import { environment } from 'environments/environment';
@@ -23,16 +23,9 @@ deleteAsegurado(numeroIdentificacion:number):Observable<void>{
   return this.http.delete<void>(`${this.myAppUrl}${numeroIdentificacion}`);
 }
 
-addAsegurado(asegurado: Asegurado): Observable<void> {
-  // Configuración de las cabeceras para la solicitud
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
-
-  // Enviar solicitud POST al servidor
-  return this.http.post<void>(this.myAppUrl, asegurado, { headers });
+addAsegurado(asegurado:Asegurado): Observable<void>{
+  return this.http.post<void>(this.myAppUrl,asegurado,)
 }
-
 
 editAsegurado(id:number):Observable<Asegurado>{
   return this.http.get<Asegurado>(`${this.myAppUrl}${id}`);
