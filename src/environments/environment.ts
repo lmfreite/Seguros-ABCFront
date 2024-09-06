@@ -1,4 +1,4 @@
 export const environment={
     production:false,
-    endpoint:"http://segurosabc.somee.com/api/Asegurado" 
+    endpoint:"https://segurosabc.somee.com/api/Asegurado" 
 }
