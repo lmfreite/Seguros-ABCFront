@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AseguradoService } from 'app/services/asegurado.service';
 import { ProgressbarComponent } from "../progressbar/progressbar.component";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-asegurados',
@@ -14,16 +15,38 @@ import { ProgressbarComponent } from "../progressbar/progressbar.component";
 })
 export class AseguradosComponent implements OnInit {
   asegurados: Asegurado[] = [];
+  loading:boolean=false;
+  mensajeError: any;
 
-  constructor(private _AseguradoService: AseguradoService) {}
+  constructor(private _AseguradoService: AseguradoService,private toastr:ToastrService) {}
 
   ngOnInit(): void {
     this.getList();
   }
 
   getList() {
-    this._AseguradoService.getAseguradoData().subscribe((data) => {
-      this.asegurados=data;
+    this.loading = true;
+    this._AseguradoService.getAseguradoData().subscribe({
+      next: (data: Asegurado[]) => {
+        this.asegurados = data;
+        this.loading = false;
+      },
+      error: (error) => {
+        this.loading = false;
+        if (error.status === 404) {
+          this.mensajeError = 'No se encontraron asegurados.';
+        } else {
+          this.mensajeError = 'Ocurrió un error inesperado.';
+        }
+      }
     });
   }
+
+  deleteAsegurado(numeroIdentificacion:number){
+    this.loading=true
+    this._AseguradoService.deleteAsegurado(numeroIdentificacion).subscribe((data) => {
+    this.getList();
+    this.toastr.warning("Asegurado eliminado con exito.","Asegurado eliminado")
+      });
+}
 }

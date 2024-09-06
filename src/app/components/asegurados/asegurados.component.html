@@ -1,5 +1,5 @@
-<app-progressbar> </app-progressbar>
-<div class="container">
+<app-progressbar *ngIf="loading"> </app-progressbar>
+<div *ngIf="!loading" class="container">
   
     <div class="title">
         <h4>Lista de asegurados</h4>
@@ -8,7 +8,7 @@
     </div>
     
 
-    <table 
+    <table *ngIf="asegurados.length > 0"
     class="table table-bordered table-striped table-dark">
         <thead>
             <tr>
@@ -41,10 +41,13 @@
               <td>{{ asegurado.observaciones }}</td>
               <td class="button-container">
                 <button routerLink="/edit/{{asegurado.numeroIdentificacion}}" type="button" class="btn btn-warning btn-sm">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                <button (click)="deleteAsegurado(asegurado.numeroIdentificacion)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
             </td>
 
             </tr>
           </tbody>
       </table>
+      <div *ngIf="mensajeError">
+        {{ mensajeError }}
+      </div>
 </div>

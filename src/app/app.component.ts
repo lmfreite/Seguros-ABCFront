@@ -4,11 +4,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AseguradosComponent } from './components/asegurados/asegurados.component';
 import { AddEditAseguradoComponent } from './components/add-edit-asegurado/add-edit-asegurado.component';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NavbarComponent,AseguradosComponent,AddEditAseguradoComponent,FormsModule],
+  imports: [RouterOutlet,NavbarComponent,AseguradosComponent,AddEditAseguradoComponent,FormsModule,ToastrModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
