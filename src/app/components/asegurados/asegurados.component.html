@@ -7,46 +7,46 @@
 
     </div>
     
-
-    <table *ngIf="asegurados && asegurados.length > 0"
-    class="table table-bordered table-striped table-dark">
-        <thead>
-            <tr>
-              <th scope="col">Número Identificación</th>
-              <th scope="col">Primer Nombre</th>
-              <th scope="col">Segundo Nombre</th>
-              <th scope="col">Primer Apellido</th>
-              <th scope="col">Segundo Apellido</th>
-              <th scope="col">Teléfono</th>
-              <th scope="col">Email</th>
-              <th scope="col">Fecha Nacimiento</th>
-              <th scope="col">Valor Estimado</th>
-              <th scope="col">Observaciones</th>
-              <th scope="col">Acciones</th>
-    
-    
-            </tr>
+    <div class="table-responsive">
+      <table *ngIf="asegurados && asegurados.length > 0"
+      class="table table-bordered table-striped table-dark">
+          <thead>
+              <tr>
+                  <th scope="col">Número Identificación</th>
+                  <th scope="col">Primer Nombre</th>
+                  <th scope="col">Segundo Nombre</th>
+                  <th scope="col">Primer Apellido</th>
+                  <th scope="col">Segundo Apellido</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Fecha Nacimiento</th>
+                  <th scope="col">Valor Estimado</th>
+                  <th scope="col">Observaciones</th>
+                  <th scope="col">Acciones</th>
+              </tr>
           </thead>
           <tbody>
-            <tr class="table-dark" *ngFor="let asegurado of asegurados">
-              <td>{{ asegurado.NumeroIdentificacion }}</td>
-              <td>{{ asegurado.PrimerNombre }}</td>
-              <td>{{ asegurado.SegundoNombre }}</td>
-              <td>{{ asegurado.PrimerApellido }}</td>
-              <td>{{ asegurado.SegundoApellido }}</td>
-              <td>{{ asegurado.Telefono }}</td>
-              <td>{{ asegurado.Email }}</td>
-              <td>{{ asegurado.FechaNacimiento }}</td>
-              <td>{{ asegurado.ValorEstimadoSeguro | currency }}</td>
-              <td>{{ asegurado.Observaciones }}</td>
-              <td class="button-container">
-                <button routerLink="/edit/{{asegurado.NumeroIdentificacion}}" type="button" class="btn btn-warning btn-sm">Editar</button>
-                <button (click)="deleteAsegurado(asegurado.NumeroIdentificacion)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
-            </td>
-
-            </tr>
+              <tr class="table-dark" *ngFor="let asegurado of asegurados">
+                  <td>{{ asegurado.NumeroIdentificacion }}</td>
+                  <td>{{ asegurado.PrimerNombre }}</td>
+                  <td>{{ asegurado.SegundoNombre }}</td>
+                  <td>{{ asegurado.PrimerApellido }}</td>
+                  <td>{{ asegurado.SegundoApellido }}</td>
+                  <td>{{ asegurado.Telefono }}</td>
+                  <td>{{ asegurado.Email }}</td>
+                  <td>{{ asegurado.FechaNacimiento }}</td>
+                  <td>{{ asegurado.ValorEstimadoSeguro | currency }}</td>
+                  <td>{{ asegurado.Observaciones }}</td>
+                  <td class="button-container">
+                      <button routerLink="/edit/{{asegurado.NumeroIdentificacion}}" 
+                              type="button" class="btn btn-warning btn-sm">Editar</button>
+                      <button (click)="deleteAsegurado(asegurado.NumeroIdentificacion)" 
+                              type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                  </td>
+              </tr>
           </tbody>
       </table>
+  </div>
       <div *ngIf="mensajeError">
         {{ mensajeError }}
       </div>
