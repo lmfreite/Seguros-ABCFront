@@ -69,28 +69,28 @@ export class AddEditAseguradoComponent implements OnInit {
     if (this.form.valid) {
       // Convertir los campos a minúsculas cuando corresponda
       const asegurado: Asegurado = {
-        numeroIdentificacion: this.form.value.numeroIdentificacion,
-        primerNombre: this.form.value.primerNombre ? this.form.value.primerNombre.toLowerCase() : '',
-        segundoNombre: this.form.value.segundoNombre ? this.form.value.segundoNombre.toLowerCase() : null,
-        primerApellido: this.form.value.primerApellido ? this.form.value.primerApellido.toLowerCase() : '',
-        segundoApellido: this.form.value.segundoApellido ? this.form.value.segundoApellido.toLowerCase() : '',
-        telefono: this.form.value.telefono,
-        email: this.form.value.email ? this.form.value.email.toLowerCase() : '',
-        fechaNacimiento: this.form.value.fechaNacimiento,
-        valorEstimadoSeguro: this.form.value.valorEstimadoSeguro,
-        observaciones: this.form.value.observaciones ? this.form.value.observaciones.toLowerCase() : null,
+        NumeroIdentificacion: this.form.value.numeroIdentificacion,
+        PrimerNombre: this.form.value.primerNombre ? this.form.value.primerNombre.toLowerCase() : '',
+        SegundoNombre: this.form.value.segundoNombre ? this.form.value.segundoNombre.toLowerCase() : null,
+        PrimerApellido: this.form.value.primerApellido ? this.form.value.primerApellido.toLowerCase() : '',
+        SegundoApellido: this.form.value.segundoApellido ? this.form.value.segundoApellido.toLowerCase() : '',
+        Telefono: this.form.value.telefono,
+        Email: this.form.value.email ? this.form.value.email.toLowerCase() : '',
+        FechaNacimiento: this.form.value.fechaNacimiento,
+        ValorEstimadoSeguro: this.form.value.valorEstimadoSeguro,
+        Observaciones: this.form.value.observaciones ? this.form.value.observaciones.toLowerCase() : null,
       };
       console.log(asegurado)
       // Validaciones adicionales
       if (this.id !== 0) {
         // Editar asegurado existente
         this.loading = true;
-        asegurado.numeroIdentificacion = this.id;
+        asegurado.NumeroIdentificacion = this.id;
         
         this._AseguradoService.updateAsegurado(this.id, asegurado).subscribe({
           next: () => {
             this.toastr.success(
-              `Asegurado ${asegurado.primerNombre} ${asegurado.primerApellido} actualizado con éxito.`,
+              `Asegurado ${asegurado.PrimerNombre} ${asegurado.PrimerApellido} actualizado con éxito.`,
               'Asegurado actualizado'
             );
             this.loading = false;
@@ -104,7 +104,7 @@ export class AddEditAseguradoComponent implements OnInit {
         this.operacion = 'Editar';
         this.editAsegurado(this.id);
       }else {
-        if (!this.validarEdad(asegurado.fechaNacimiento)) {
+        if (!this.validarEdad(asegurado.FechaNacimiento)) {
           this.toastr.error('El asegurado debe ser mayor de edad');
           this.loading = false;
           return; // Salir de la función si la validación falla
@@ -112,7 +112,7 @@ export class AddEditAseguradoComponent implements OnInit {
         this.loading = true;
         this._AseguradoService.addAsegurado(asegurado).subscribe(() => {
           this.toastr.success(
-            `Asegurado ${asegurado.primerNombre} ${asegurado.primerApellido} agregado con éxito.`,
+            `Asegurado ${asegurado.PrimerNombre} ${asegurado.PrimerApellido} agregado con éxito.`,
             'Asegurado agregado'
           );
           this.loading = false;
@@ -144,16 +144,16 @@ export class AddEditAseguradoComponent implements OnInit {
     this._AseguradoService.editAsegurado(id).subscribe((asegurado: Asegurado) => {
       this.loading = false;
       this.form.patchValue({
-        numeroIdentificacion: asegurado.numeroIdentificacion,
-        primerNombre: asegurado.primerNombre,
-        segundoNombre: asegurado.segundoNombre,
-        primerApellido: asegurado.primerApellido,
-        segundoApellido: asegurado.segundoApellido,
-        telefono: asegurado.telefono,
-        email: asegurado.email,
-        fechaNacimiento: asegurado.fechaNacimiento,
-        valorEstimadoSeguro: asegurado.valorEstimadoSeguro,
-        observaciones: asegurado.observaciones,
+        numeroIdentificacion: asegurado.NumeroIdentificacion,
+        primerNombre: asegurado.PrimerNombre,
+        segundoNombre: asegurado.SegundoNombre,
+        primerApellido: asegurado.PrimerApellido,
+        segundoApellido: asegurado.SegundoApellido,
+        telefono: asegurado.Telefono,
+        email: asegurado.Email,
+        fechaNacimiento: asegurado.FechaNacimiento,
+        valorEstimadoSeguro: asegurado.ValorEstimadoSeguro,
+        observaciones: asegurado.Observaciones,
       });
     });
   }

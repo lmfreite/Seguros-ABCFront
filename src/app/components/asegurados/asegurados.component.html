@@ -8,7 +8,7 @@
     </div>
     
 
-    <table *ngIf="asegurados.length > 0"
+    <table *ngIf="asegurados && asegurados.length > 0"
     class="table table-bordered table-striped table-dark">
         <thead>
             <tr>
@@ -29,19 +29,19 @@
           </thead>
           <tbody>
             <tr class="table-dark" *ngFor="let asegurado of asegurados">
-              <td>{{ asegurado.numeroIdentificacion }}</td>
-              <td>{{ asegurado.primerNombre }}</td>
-              <td>{{ asegurado.segundoNombre }}</td>
-              <td>{{ asegurado.primerApellido }}</td>
-              <td>{{ asegurado.segundoApellido }}</td>
-              <td>{{ asegurado.telefono }}</td>
-              <td>{{ asegurado.email }}</td>
-              <td>{{ asegurado.fechaNacimiento }}</td>
-              <td>{{ asegurado.valorEstimadoSeguro |currency }}</td>
-              <td>{{ asegurado.observaciones }}</td>
+              <td>{{ asegurado.NumeroIdentificacion }}</td>
+              <td>{{ asegurado.PrimerNombre }}</td>
+              <td>{{ asegurado.SegundoNombre }}</td>
+              <td>{{ asegurado.PrimerApellido }}</td>
+              <td>{{ asegurado.SegundoApellido }}</td>
+              <td>{{ asegurado.Telefono }}</td>
+              <td>{{ asegurado.Email }}</td>
+              <td>{{ asegurado.FechaNacimiento }}</td>
+              <td>{{ asegurado.ValorEstimadoSeguro | currency }}</td>
+              <td>{{ asegurado.Observaciones }}</td>
               <td class="button-container">
-                <button routerLink="/edit/{{asegurado.numeroIdentificacion}}" type="button" class="btn btn-warning btn-sm">Editar</button>
-                <button (click)="deleteAsegurado(asegurado.numeroIdentificacion)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                <button routerLink="/edit/{{asegurado.NumeroIdentificacion}}" type="button" class="btn btn-warning btn-sm">Editar</button>
+                <button (click)="deleteAsegurado(asegurado.NumeroIdentificacion)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
             </td>
 
             </tr>

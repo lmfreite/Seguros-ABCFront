@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-asegurados',
   standalone: true,
-  imports: [CommonModule, RouterLink, ProgressbarComponent],
+  imports: [CommonModule,RouterLink, ProgressbarComponent],
   templateUrl: './asegurados.component.html',
   styleUrls: ['./asegurados.component.css'],
 })
@@ -28,18 +28,7 @@ export class AseguradosComponent implements OnInit {
     this.loading = true;
     this._AseguradoService.getAseguradoData().subscribe({
       next: (data: Asegurado[]) => {
-        this.asegurados = data.map(asegurado => ({
-          numeroIdentificacion: asegurado.numeroIdentificacion,
-          primerNombre: asegurado.primerNombre,
-          segundoNombre: asegurado.segundoNombre,
-          primerApellido: asegurado.primerApellido,
-          segundoApellido: asegurado.segundoApellido,
-          telefono: asegurado.telefono,
-          email: asegurado.email,
-          fechaNacimiento: asegurado.fechaNacimiento,
-          valorEstimadoSeguro: asegurado.valorEstimadoSeguro,
-          observaciones: asegurado.observaciones
-        }));
+        this.asegurados = data;
         this.loading = false;
       },
       error: (error) => {

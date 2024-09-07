@@ -1,13 +1,13 @@
 export interface Asegurado {
-    numeroIdentificacion: number;     // Equivalente a int
-    primerNombre: string;            
-    segundoNombre?: string;           
-    primerApellido: string;           
-    segundoApellido: string;          
-    telefono: string;                 // validar formato en Angular
-    email: string;                    //validar formato en Angular
-    fechaNacimiento: string;          // Usar string o Date para representar DateOnly
-    valorEstimadoSeguro: number;      
-    observaciones?: string;           
+    NumeroIdentificacion: number;     // Equivalente a int
+    PrimerNombre: string;            
+    SegundoNombre?: string;           
+    PrimerApellido: string;           
+    SegundoApellido: string;          
+    Telefono: string;                 // validar formato en Angular
+    Email: string;                    //validar formato en Angular
+    FechaNacimiento: string;          // Usar string o Date para representar DateOnly
+    ValorEstimadoSeguro: number;      
+    Observaciones?: string;           
   }
   
